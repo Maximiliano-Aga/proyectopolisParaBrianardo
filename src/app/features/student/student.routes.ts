@@ -4,7 +4,7 @@ import { AttendanceHistoryComponent } from './attendance-history/attendance-hist
 import { SubjectsComponent } from './subjects/subjects.component';
 
 export const studentRoutes: Routes = [
-    {path: 'student/dashboard', component: DashboardComponent},
-    {path:'student/attendance-history',component: AttendanceHistoryComponent},
-    {path:'student/subjects',component: SubjectsComponent},
+    {path: 'dashboard', component: DashboardComponent},
+    {path:'attendance-history',component: AttendanceHistoryComponent},
+    {path:'subjects',component: SubjectsComponent},
 ];
