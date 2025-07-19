@@ -8,6 +8,9 @@ export const routes: Routes = [
         component: PublicLayoutsComponent,
         children: [
             {path: 'auth', loadChildren: () => import('./features/auth/auth.routes').then(m => m.authRoutes)},
+            {path: '', redirectTo: '/public/auth/login', pathMatch: 'full'},
+            {path: '**', redirectTo: '/public/auth/login', pathMatch: 'full'},
+
         ]
     },
 
@@ -16,8 +19,11 @@ export const routes: Routes = [
         children: [
             {path: 'admin', loadChildren: () => import('./features/admin/admin.routes').then(m => m.adminRoutes)},
             {path: 'student', loadChildren: () => import('./features/student/student.routes').then(m => m.studentRoutes)},
+            {path:'teacher', loadChildren: () => import('./features/teacher/teacher.routes').then(m => m.teacherRoutes)},
         ]
-    }
+    },
+
+    {path: '', redirectTo: '/public/auth/login', pathMatch: 'full'},
 ];
 
 

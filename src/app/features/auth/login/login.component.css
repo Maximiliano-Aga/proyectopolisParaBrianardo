@@ -1,0 +1,13 @@
+.form-control{
+    background-color: transparent;
+    color: white;
+    border: none;
+    border-bottom: 1px solid white;
+    border-radius: 0;
+}
+
+.form-control:focus {
+    outline: none;
+    box-shadow: white 0px 0px 0px 1px;
+    transition: 0.2s;
+}

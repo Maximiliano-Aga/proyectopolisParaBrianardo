@@ -7,4 +7,6 @@ export const studentRoutes: Routes = [
     {path: 'dashboard', component: DashboardComponent},
     {path:'attendance-history',component: AttendanceHistoryComponent},
     {path:'subjects',component: SubjectsComponent},
+    {path: '', redirectTo: '/private/student/dashboard', pathMatch: 'full'},
+    {path: '**', redirectTo: '/private/student/dashboard', pathMatch: 'full'},
 ];
