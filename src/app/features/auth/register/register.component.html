@@ -1,1 +1,121 @@
-<p>register works!</p>
+<div class="register-wrapper">
+  <div class="register-container">
+    <div class="register-header">
+      <img src="assets/logo-negro.png" alt="Logo" class="register-logo">
+      <h2 class="register-title">Crear Cuenta</h2>
+      <p class="register-subtitle">Complete sus datos para registrarse</p>
+    </div>
+
+    <div class="register-form">
+      <form>
+        <!-- Primera fila - 2 columnas -->
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Documento de Identidad*</label>
+              <input type="text" class="form-control" placeholder="Ingrese su documento">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Correo Electrónico*</label>
+              <input type="email" class="form-control" placeholder="ejemplo@correo.com">
+            </div>
+          </div>
+        </div>
+
+        <!-- Segunda fila - 2 columnas -->
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Apellido*</label>
+              <input type="text" class="form-control" placeholder="Ingrese su apellido">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Nombre*</label>
+              <input type="text" class="form-control" placeholder="Ingrese su nombre">
+            </div>
+          </div>
+        </div>
+
+        <!-- Tercera fila - 2 columnas -->
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Teléfono*</label>
+              <input type="tel" class="form-control" placeholder="Ingrese su teléfono">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Rol*</label>
+              <select class="form-control">
+                <option value="" disabled selected>Seleccione su rol</option>
+                <option>Estudiante</option>
+                <option>Docente</option>
+                <option>Administrativo</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cuarta fila - 1 columna -->
+        <div class="row">
+          <div class="col-12">
+            <div class="form-group">
+              <label>Domicilio*</label>
+              <input type="text" class="form-control" placeholder="Ingrese su dirección">
+            </div>
+          </div>
+        </div>
+
+        <!-- Quinta fila - 2 columnas -->
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Localidad*</label>
+              <input type="text" class="form-control" placeholder="Ingrese su localidad">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Provincia*</label>
+              <input type="text" class="form-control" placeholder="Ingrese su provincia">
+            </div>
+          </div>
+        </div>
+
+        <!-- Sexta fila - 2 columnas (contraseñas) -->
+        <div class="row password-row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Contraseña*</label>
+              <input type="password" class="form-control" placeholder="Mínimo 8 caracteres">
+              <small class="form-text">La contraseña debe contener al menos 8 caracteres</small>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Confirmar Contraseña*</label>
+              <input type="password" class="form-control" placeholder="Repita su contraseña">
+            </div>
+          </div>
+        </div>
+
+        <!-- Botón de registro -->
+        <div class="register-actions">
+          <button type="submit" class="btn btn-register">
+            <i class="fas fa-user-plus"></i> Registrar
+          </button>
+        </div>
+
+        <!-- Enlace para login -->
+        <div class="login-link">
+          ¿Ya tienes una cuenta? <a routerLink="public/auth/login">Inicia sesión</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
