@@ -9,16 +9,20 @@ import { TakeAttendanceComponent } from './take-attendance/take-attendance.compo
 import { UserManagementComponent } from './user-management/user-management.component';
 
 export const adminRoutes: Routes = [
-    {path: 'dashboard', component: DashboardComponent},
-    {path:'attendance-overview',component: AttendanceOverviewComponent},
-    {path:'edit-attendance',component: EditAttendanceComponent},
-    {path: 'justify-absence',component: JustifyAbsenceComponent},
-    {path: 'reports/absence-reports',component: AbsenceReportsComponent},
-    {path: 'reports/generate-reports',component: GenerateReportComponent},
-    {path: 'take-attendance',component:TakeAttendanceComponent},
-    {path: 'user-managment', component: UserManagementComponent},
-    {path: '', redirectTo: '/private/admin/dashboard', pathMatch: 'full'},
-    {path: '**', redirectTo: '/private/admin/dashboard', pathMatch: 'full'}
+  {
+    path: 'dashboard',
+    component: DashboardComponent, 
+    children: [
+      { path: 'attendance-overview', component: AttendanceOverviewComponent },
+      { path: 'edit-attendance', component: EditAttendanceComponent },
+      { path: 'justify-absence', component: JustifyAbsenceComponent },
+      { path: 'reports/absence-reports', component: AbsenceReportsComponent },
+      { path: 'reports/generate-reports', component: GenerateReportComponent },
+      { path: 'take-attendance', component: TakeAttendanceComponent },
+      { path: 'user-management', component: UserManagementComponent },
+      { path: '', redirectTo: 'user-management', pathMatch: 'full' } // Carga por defecto
+    ]
+  },
+  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+  { path: '**', redirectTo: 'dashboard', pathMatch: 'full' }
 ];
-
-
