@@ -1,0 +1,43 @@
+
+/* Estilos personalizados para mejorar la apariencia */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f8f9fa;
+}
+
+.navbar {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
+}
+
+.card {
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, .05);
+    transition: transform .2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.nav-pills .nav-link.active {
+    background-color: #0d6efd;
+}
+
+.view-section {
+    display: none;
+    /* Oculta todas las vistas por defecto */
+}
+
+.view-section.active {
+    display: block;
+    /* Muestra solo la vista activa */
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(0, 123, 255, 0.075);
+}
+
+.badge {
+    font-size: 0.85em;
+    padding: 0.5em 0.7em;
+}
