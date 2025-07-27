@@ -4,15 +4,15 @@
 --background-blue: #1B263B;
 --primary-blue: #0D1B2A;
 --secondary-blue: #415A77;
+       
+            --primary-color-blue: #3b89d7;
+            --primary-hover-blue: #66b2ff;
+            --white: #ffffff;
 }
 
-.background-blue {
-  background-color: var(--background-blue);
-  color: white;
-}
 
 .background-primary{
-    background-color: var(--primary-blue);
+    background-color: var(--primarycolor-blue);
     color: white;
 }
 
@@ -20,3 +20,53 @@
     background-color: var(--secondary-blue);
     color: white;
 }
+
+        .login-wrapper {
+            background-color: #d1d1d1;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 20px;
+        }
+        .login-container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .image-column {
+            background: linear-gradient(135deg, #0b61ff 0%, #2776ff 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+        .university-logo {
+            max-width: 100%;
+            height: auto;
+        }
+        .login-form-container {
+            padding: 40px;
+        }
+        .mobile-logo-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .mobile-logo {
+            max-height: 80px;
+        }
+        .mobile-border {
+            height: 5px;
+            background: linear-gradient(90deg, #1e3c72 0%, #2a5298 100%);
+            margin-bottom: 20px;
+        }
+        .btn-custom {
+            background: linear-gradient(90deg, #0059ff 0%, #005eff 100%);
+            color: white;
+            border: none;
+            padding: 10px;
+        }
+        .btn-custom:hover {
+            background: linear-gradient(90deg, #69a0ff 0%, #69a0ff 100%);
+            color: white;
+        }

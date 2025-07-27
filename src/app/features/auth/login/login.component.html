@@ -1,23 +1,176 @@
-<div class="container-fluid d-flex justify-content-center align-items-center vh-100 background-blue"><!--div principal-->
-    <section class="d-flex">
-            <div class="flex-grow-1 background-secondary "><!--div logo-->
-                    <img src="logo blanco.png">
-                <p>GESTIÓN ACADEMICA INTEGRAL</p>
+    <div class="login-wrapper">
+        <div class="row g-0 login-container">
+            <!-- Columna de la imagen (solo desktop) -->
+            <div class="col-md-5 image-column d-none d-md-flex">
+                <img src="logo-blanco.png" alt="Logo Universidad" class="university-logo">
             </div>
             
-            <div class="background-primary p-5 "><!--div formulario-->
-                <form action="">
-                    <div class="mb-3 ">
-                        <label for="formGroupExampleInput" class="form-label">USUARIO</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput" >
-                    </div>
+            <!-- Columna del formulario -->
+            <div class="col-md-7 login-form-container">
+                <div class="mobile-border d-md-none"></div>
+                
+                <!-- Logo en móvil -->
+                <div class="mobile-logo-container d-md-none">
+                    <img src="logoNegro.png" alt="Logo Universidad" class="mobile-logo">
+                </div>
+                
+                <h3 class="text-center mb-3">Sistema de Gestión Integral</h3>
+                <p class="text-muted text-center mb-4">Ingrese sus credenciales</p>
+                
+                <form id="loginForm">
                     <div class="mb-3">
-                        <label for="formGroupExampleInput2" class="form-label ">CONTRASEÑA</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput2">
+                        <label for="username" class="form-label">Usuario</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            <input type="text" class="form-control" id="username" placeholder="Ingrese su usuario" required>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label for="password" class="form-label">Contraseña</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                            <input type="password" class="form-control" id="password" placeholder="Ingrese su contraseña" required>
+                        </div>
+                    </div>
+                    
+                    <div class="d-grid mb-3">
+                        <button type="submit" class="btn btn-custom">
+                            <i class="fas fa-sign-in-alt me-2"></i> Iniciar Sesión
+                        </button>
+                    </div>
+                    
+                    <div class="text-center pt-3">
+                        <a href="#" class="text-decoration-none">¿Olvidó su contraseña?</a>
+                    </div>
+                    
+                    <!-- Botón para abrir el modal de registro -->
+                    <div class="text-center mt-3">
+                        <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#registerModal">
+                            <i class="fas fa-user-plus me-2"></i> Crear nueva cuenta
+                        </button>
                     </div>
                 </form>
-                <button class="">INGRESAR</button>
             </div>
+        </div>
+    </div>
 
-    </section>
-</div>
+    <!-- Modal de Registro Completo -->
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="registerModalLabel">Nuevo Registro</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="registerForm">
+                        <div class="row">
+                            <!-- Columna Izquierda -->
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="documento" class="form-label">Documento de Identidad*</label>
+                                    <input type="text" class="form-control" id="documento" placeholder="DNI, Pasaporte, etc." required>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="apellido" class="form-label">Apellido*</label>
+                                    <input type="text" class="form-control" id="apellido" required>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="nombre" class="form-label">Nombre*</label>
+                                    <input type="text" class="form-control" id="nombre" required>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Correo Electrónico*</label>
+                                    <input type="email" class="form-control" id="email" placeholder="ejemplo@dominio.com" required>
+                                </div>
+                            </div>
+                            
+                            <!-- Columna Derecha -->
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="telefono" class="form-label">Teléfono*</label>
+                                    <input type="tel" class="form-control" id="telefono" required>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="domicilio" class="form-label">Domicilio*</label>
+                                    <input type="text" class="form-control" id="domicilio" required>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="localidad" class="form-label">Localidad*</label>
+                                    <input type="text" class="form-control" id="localidad" required>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="rol" class="form-label">Rol*</label>
+                                    <select class="form-select" id="rol" required>
+                                        <option value="" selected disabled>Seleccione un rol</option>
+                                        <option value="estudiante">Estudiante</option>
+                                        <option value="docente">Docente</option>
+                                        <option value="administrativo">Personal Administrativo</option>
+                                        <option value="otro">Otro</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="password" class="form-label">Contraseña*</label>
+                                    <input type="password" class="form-control" id="password" required minlength="8">
+                                    <div class="form-text">Mínimo 8 caracteres</div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="confirm-password" class="form-label">Confirmar Contraseña*</label>
+                                    <input type="password" class="form-control" id="confirm-password" required>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-check mb-4">
+                            <input class="form-check-input" type="checkbox" id="terms" required>
+                            <label class="form-check-label" for="terms">
+                                Acepto los <a href="#" data-bs-toggle="modal" data-bs-target="#termsModal">términos y condiciones</a>
+                            </label>
+                        </div>
+                        
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-user-plus me-2"></i> Registrar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Términos y Condiciones (Opcional) -->
+    <div class="modal fade" id="termsModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Términos y Condiciones</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Aquí van los términos y condiciones de uso del sistema...</p>
+                    <!-- Contenido detallado -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+   
