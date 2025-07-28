@@ -1,39 +1,59 @@
 <div class="container mt-4 mb-5">
   <div class="d-flex justify-content-between align-items-center mb-4">
     <h1 class="h2">Panel del Preceptor</h1>
-    <span class="badge bg-secondary">Rol: Administrador</span>
   </div>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">
+                
+            </a>
+            <div class="ms-auto">
+                <div class="btn-group" role="group" aria-label="Selector de Rol">
+                    <button type="button" class="btn btn-outline-primary active" id="btn-preceptor">Preceptor</button>
+                    <button type="button" class="btn btn-outline-primary" id="btn-profesor">Profesor</button>
+                    <button type="button" class="btn btn-outline-primary" id="btn-alumno">Alumno</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
 
   <!-- Navegación con Angular Router -->
   <ul class="nav nav-pills mb-4">
     <li class="nav-item" role="presentation">
-      <a class="nav-link"
-         routerLink="user-management"
-         routerLinkActive="active">
+      <a class="nav-link" routerLink="user-management" routerLinkActive="active">
         <i class="bi bi-bell-fill me-1"></i>
         Solicitudes Pendientes <span class="badge bg-danger ms-1">2</span>
       </a>
     </li>
     <li class="nav-item" role="presentation">
-      <a class="nav-link"
-         routerLink="take-attendance"
-         routerLinkActive="active">
+      <a class="nav-link" routerLink="take-attendance" routerLinkActive="active">
         <i class="bi bi-calendar-check me-1"></i>
         Tomar/Editar Asistencia
       </a>
     </li>
     <li class="nav-item" role="presentation">
-      <a class="nav-link"
-         routerLink="attendance-overview"
-         routerLinkActive="active">
+      <a class="nav-link" routerLink="role-management" routerLinkActive="active">
+        <i class="bi bi-person-check-fill me-1"></i> Definir Roles
+      </a>
+    </li>
+
+    <li class="nav-item" role="presentation">
+      <a class="nav-link" routerLink="subject-management" routerLinkActive="active" 
+        role="tab">
+        <i class="bi bi-book-fill me-1"></i> Administrar Materias
+    </a>
+    </li>
+
+    <li class="nav-item" role="presentation">
+      <a class="nav-link" routerLink="attendance-overview" routerLinkActive="active">
         <i class="bi bi-eye-fill me-1"></i>
         Ver Asistencias
       </a>
     </li>
     <li class="nav-item" role="presentation">
-      <a class="nav-link"
-         routerLink="reports/absence-reports"
-         routerLinkActive="active">
+      <a class="nav-link" routerLink="reports/absence-reports" routerLinkActive="active">
         <i class="bi bi-graph-up me-1"></i>
         Reportes de Inasistencias
       </a>

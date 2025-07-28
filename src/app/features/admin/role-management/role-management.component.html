@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header fw-bold">Gestión de Roles de Usuario</div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead>
+                        <tr>
+                            <th>Usuario</th>
+                            <th>Rol Actual</th>
+                            <th>Cambiar Rol a</th>
+                            <th class="text-end">Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>perez.ricardoemail.com</td>
+                            <td><span class="badge bg-info">Profesor</span></td>
+                            <td>
+                                <select class="form-select form-select-sm" style="min-width: 150px;">
+                                    <option>Preceptor</option>
+                                    <option selected>Profesor</option>
+                                    <option>Alumno</option>
+                                </select>
+                            </td>
+                            <td class="text-end"><button class="btn btn-outline-primary btn-sm">Guardar</button></td>
+                        </tr>
+                        <tr>
+                            <td>gomez.juanemail.com</td>
+                            <td><span class="badge bg-light text-dark">Alumno</span></td>
+                            <td>
+                                <select class="form-select form-select-sm">
+                                    <option>Preceptor</option>
+                                    <option>Profesor</option>
+                                    <option selected>Alumno</option>
+                                </select>
+                            </td>
+                            <td class="text-end"><button class="btn btn-outline-primary btn-sm">Guardar</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

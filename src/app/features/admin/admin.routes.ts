@@ -7,6 +7,9 @@ import { AbsenceReportsComponent } from './reports/absence-reports/absence-repor
 import { GenerateReportComponent } from './reports/generate-report/generate-report.component';
 import { TakeAttendanceComponent } from './take-attendance/take-attendance.component';
 import { UserManagementComponent } from './user-management/user-management.component';
+import { SubjectManagementComponent } from './subject-management/subject-management.component';
+import { RoleManagementComponent } from './role-management/role-management.component';
+
 
 export const adminRoutes: Routes = [
   {
@@ -20,6 +23,9 @@ export const adminRoutes: Routes = [
       { path: 'reports/generate-reports', component: GenerateReportComponent },
       { path: 'take-attendance', component: TakeAttendanceComponent },
       { path: 'user-management', component: UserManagementComponent },
+      { path: 'subject-management', component: SubjectManagementComponent },
+      { path: 'role-management', component: RoleManagementComponent },
+      { path: '**', redirectTo: 'dashboard', pathMatch: 'full'},
       { path: '', redirectTo: 'user-management', pathMatch: 'full' } // Carga por defecto
     ]
   },
