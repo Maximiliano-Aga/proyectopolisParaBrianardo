@@ -4,9 +4,20 @@ import { AttendanceHistoryComponent } from './attendance-history/attendance-hist
 import { SubjectsComponent } from './subjects/subjects.component';
 
 export const studentRoutes: Routes = [
-    {path: 'dashboard', component: DashboardComponent},
-    {path:'attendance-history',component: AttendanceHistoryComponent},
-    {path:'subjects',component: SubjectsComponent},
-    {path: '', redirectTo: '/private/student/dashboard', pathMatch: 'full'},
-    {path: '**', redirectTo: '/private/student/dashboard', pathMatch: 'full'},
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+    children: [
+      { path: 'attendance-history', component: AttendanceHistoryComponent },
+      { path: 'subjects', component: SubjectsComponent },
+
+      // Redirección dentro del dashboard (ruta hija)
+      { path: '', redirectTo: 'attendance-history', pathMatch: 'full' },
+      { path: '**', redirectTo: 'attendance-history', pathMatch: 'full' }
+    ]
+  },
+
+  // Redirecciones fuera del dashboard
+  { path: '', redirectTo: '/private/student/dashboard', pathMatch: 'full' },
+  { path: '**', redirectTo: '/private/student/dashboard', pathMatch: 'full' }
 ];
