@@ -1,0 +1,228 @@
+/* Estilos generales */
+body {
+  background-color: #f8f9fa;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container-fluid {
+  padding: 0 1.5rem;
+}
+
+/* Cards */
+.card {
+  border: none;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+}
+
+.card-header {
+  font-weight: 600;
+  padding: 1rem 1.5rem;
+}
+
+/* Tablas */
+.table {
+  margin-bottom: 0;
+}
+
+.table thead th {
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
+  background-color: #f1f3f5 !important;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.table-hover tbody tr:hover {
+  background-color: rgba(13, 110, 253, 0.05);
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+/* Badges */
+.badge {
+  font-weight: 500;
+  padding: 0.35em 0.65em;
+  font-size: 0.75em;
+}
+
+/* Progress bars */
+.progress {
+  border-radius: 10px;
+  background-color: #e9ecef;
+}
+
+.progress-bar {
+  font-size: 0.75rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Botones */
+.btn {
+  font-weight: 500;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.375rem;
+}
+
+.btn-sm {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+}
+
+.btn-outline-primary {
+  border-width: 2px;
+}
+
+.btn-outline-primary:hover {
+  background-color: transparent;
+}
+
+/* Formularios */
+.form-label {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: #495057;
+}
+
+.form-select {
+  padding: 0.375rem 1.75rem 0.375rem 0.75rem;
+  border-radius: 0.375rem;
+  border-width: 2px;
+  cursor: pointer;
+}
+
+/* Acordeón */
+.accordion {
+  --bs-accordion-border-color: #dee2e6;
+  --bs-accordion-border-width: 1px;
+  --bs-accordion-border-radius: 0.5rem;
+  --bs-accordion-inner-border-radius: calc(0.5rem - 1px);
+  --bs-accordion-btn-padding-x: 1.25rem;
+  --bs-accordion-btn-padding-y: 0.75rem;
+}
+
+.accordion-button {
+  font-weight: 500;
+  background-color: #f8f9fa;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: #f1f3f5;
+  box-shadow: none;
+}
+
+.accordion-button:focus {
+  box-shadow: none;
+  border-color: rgba(13, 110, 253, 0.25);
+}
+
+.accordion-body {
+  padding: 1rem 1.25rem;
+}
+
+/* Modal */
+.modal-content {
+  border: none;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.modal-header {
+  padding: 1rem 1.5rem;
+}
+
+.modal-body {
+  padding: 1.5rem;
+}
+
+.modal-footer {
+  padding: 1rem 1.5rem;
+  background-color: #f8f9fa;
+  border-top: 1px solid #dee2e6;
+}
+
+/* Paginación */
+.pagination {
+  margin-bottom: 0;
+}
+
+.page-item.active .page-link {
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+}
+
+.page-link {
+  color: #0d6efd;
+  border: 1px solid #dee2e6;
+  margin-left: -1px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container-fluid {
+    padding: 0 1rem;
+  }
+  
+  .card-header, .card-body {
+    padding: 0.75rem;
+  }
+  
+  .table-responsive {
+    border: none;
+  }
+  
+  .btn-sm {
+    padding: 0.2rem 0.4rem;
+    font-size: 0.75rem;
+  }
+}
+
+/* Efectos hover */
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para la impresión */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  
+  .modal, .modal * {
+    visibility: visible;
+  }
+  
+  .modal {
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    border: none;
+  }
+  
+  .modal-footer, .btn-close {
+    display: none;
+  }
+  
+  .accordion-button::after {
+    display: none;
+  }
+  
+  .accordion-collapse {
+    display: block !important;
+  }
+}
