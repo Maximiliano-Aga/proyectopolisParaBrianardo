@@ -80,9 +80,9 @@
               <label>Rol*</label>
               <select formControlName="rol" class="form-control">
                 <option value="" disabled selected>Seleccione su rol</option>
-                <option>Estudiante</option>
-                <option>Docente</option>
-                <option>Administrativo</option>
+                @for (role of roles; track $index) {
+                  <option class="option" value="{{role.name}}">{{role.name}}</option>
+                }
               </select>
             </div>
             @if (rol.invalid && (rol.dirty || rol.touched)) {
@@ -144,7 +144,7 @@
           <div class="col-md-6">
             <div class="form-group">
               <label>Contraseña*</label>
-              <input type="password" class="form-control" placeholder="Mínimo 8 caracteres">
+              <input formControlName = "usPassword" type="password" class="form-control" placeholder="Mínimo 8 caracteres">
               <small class="form-text">La contraseña debe contener al menos 8 caracteres</small>
             </div>
             @if (usPassword.invalid && (usPassword.dirty || usPassword.touched)) {
@@ -157,7 +157,7 @@
           <div class="col-md-6">
             <div class="form-group">
               <label>Confirmar Contraseña*</label>
-              <input type="password" class="form-control" placeholder="Repita su contraseña">
+              <input formControlName="repetirPassword" type="password" class="form-control" placeholder="Repita su contraseña">
             </div>
             @if (repetirPassword.invalid && (repetirPassword.dirty || repetirPassword.touched)) {
                 <div class="invalid-feedback d-block">
