@@ -11,7 +11,7 @@ import { authInterceptor } from './core/interceptors/auth.interceptor';
 
 
 export const appConfig: ApplicationConfig = {
-  providers: [
+  providers: [provideHttpClient(), 
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     provideRouter(studentRoutes),
