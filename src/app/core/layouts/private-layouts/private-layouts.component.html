@@ -1,3 +1,72 @@
 <header></header>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
+  <div class="container">
+    <a class="navbar-brand fw-bold" routerLink="/">
+      <img src="public/logoNegro.png" alt="Logo" height="30">
+    </a>
+    <div class="ms-auto">
+      <div class="btn-group" role="group" aria-label="Selector de Rol">
+        <button type="button" class="btn btn-outline-primary" 
+                routerLink="/private/admin" routerLinkActive="active">
+          Preceptor
+        </button>
+        <button type="button" class="btn btn-outline-primary" 
+                routerLink="/private/teacher" routerLinkActive="active">
+          Profesor
+        </button>
+        <button type="button" class="btn btn-outline-primary" 
+                routerLink="/private/student" routerLinkActive="active">
+          Alumno
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="container mt-4">
+
+  <ul class="nav nav-pills mb-4" *ngIf="role === 'admin'">
+    <li class="nav-item" role="presentation">
+      <a class="nav-link" routerLink="/private/admin/user-management" routerLinkActive="active">
+        <i class="bi bi-bell-fill me-1"></i>
+        Solicitudes Pendientes <span class="badge bg-danger ms-1">2</span>
+      </a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a class="nav-link" routerLink="/private/admin/take-attendance" routerLinkActive="active">
+        <i class="bi bi-calendar-check me-1"></i>
+        Tomar/Editar Asistencia
+      </a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a class="nav-link" routerLink="/private/admin/role-management" routerLinkActive="active">
+        <i class="bi bi-person-check-fill me-1"></i> Definir Roles
+      </a>
+    </li>
+    </ul>
+
+  <ul class="nav nav-pills mb-4" *ngIf="role === 'teacher'">
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/private/teacher/subjects" routerLinkActive="active">
+        Mis Materias
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/private/teacher/attendance-list" routerLinkActive="active">
+        Ver Asistencias
+      </a>
+    </li>
+  </ul>
+
+  <ul class="nav nav-pills mb-4" *ngIf="role === 'student'">
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/private/student/attendance-history" routerLinkActive="active">
+        Mi Historial de Asistencias
+      </a>
+    </li>
+  </ul>
+
+</div>
 <router-outlet></router-outlet>
 <footer></footer>

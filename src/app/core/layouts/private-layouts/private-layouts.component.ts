@@ -1,12 +1,19 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { RouterOutlet, RouterModule } from '@angular/router';
+
 
 @Component({
   selector: 'app-private-layouts',
-  imports: [RouterOutlet],
+  imports: [
+    CommonModule,
+    RouterOutlet,
+    RouterModule
+  ],
   templateUrl: './private-layouts.component.html',
-  styleUrl: './private-layouts.component.css'
+  styleUrls: ['./private-layouts.component.css']
 })
-export class PrivateLayoutsComponent {
 
+export class PrivateLayoutsComponent {
+  role: string = 'admin';
 }

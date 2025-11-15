@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
 import { PublicLayoutsComponent } from './core/layouts/public-layouts/public-layouts.component';
-import { privateDecrypt } from 'crypto';
 import { PrivateLayoutsComponent } from './core/layouts/private-layouts/private-layouts.component';
 
 export const routes: Routes = [
