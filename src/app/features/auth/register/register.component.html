@@ -7,20 +7,32 @@
     </div>
 
     <div class="register-form">
-      <form>
+      <form [formGroup]="registrosForm">
         <!-- Primera fila - 2 columnas -->
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
               <label>Documento de Identidad*</label>
-              <input type="text" class="form-control" placeholder="Ingrese su documento">
+              <input formControlName="usDocumento" type="text" class="form-control" placeholder="Ingrese su documento">
             </div>
+            @if (usDocumento.invalid && (usDocumento.dirty || usDocumento.touched)) {
+              <div class="invalid-feedback d-block">
+                  @if (usDocumento.hasError("required")) {Introduzca un documento de identidad}
+                  @if (usDocumento.hasError("pattern")) {Documento de identidad inválido}
+              </div>
+            }
           </div>
           <div class="col-md-6">
             <div class="form-group">
               <label>Correo Electrónico*</label>
-              <input type="email" class="form-control" placeholder="ejemplo@correo.com">
+              <input formControlName="usMail" type="email" class="form-control" placeholder="ejemplo@correo.com">
             </div>
+            @if (usMail.invalid && (usMail.dirty || usMail.touched)) {
+              <div class="invalid-feedback d-block">
+                  @if (usMail.hasError("required")) {Introduzca un correo electrónico}
+                  @if (usMail.hasError("pattern")) {Correo electrónico inválido}
+              </div>
+            }
           </div>
         </div>
 
@@ -29,14 +41,24 @@
           <div class="col-md-6">
             <div class="form-group">
               <label>Apellido*</label>
-              <input type="text" class="form-control" placeholder="Ingrese su apellido">
+              <input formControlName="usApellido" type="text" class="form-control" placeholder="Ingrese su apellido">
             </div>
+            @if (usApellido.invalid && (usApellido.dirty || usApellido.touched)) {
+              <div class="invalid-feedback d-block">
+                  @if (usApellido.hasError("required")) {Introduzca su apellido}
+              </div>
+            }
           </div>
           <div class="col-md-6">
             <div class="form-group">
               <label>Nombre*</label>
-              <input type="text" class="form-control" placeholder="Ingrese su nombre">
+              <input formControlName="usNombre" type="text" class="form-control" placeholder="Ingrese su nombre">
             </div>
+            @if (usNombre.invalid && (usNombre.dirty || usNombre.touched)) {
+              <div class="invalid-feedback d-block">
+                  @if (usNombre.hasError("required")) {Introduzca su nombre}
+              </div>
+            }
           </div>
         </div>
 
@@ -45,19 +67,29 @@
           <div class="col-md-6">
             <div class="form-group">
               <label>Teléfono*</label>
-              <input type="tel" class="form-control" placeholder="Ingrese su teléfono">
+              <input formControlName="usTelefono" type="tel" class="form-control" placeholder="Ingrese su teléfono">
             </div>
+            @if (usTelefono.invalid && (usTelefono.dirty || usTelefono.touched)) {
+              <div class="invalid-feedback d-block">
+                  @if (usTelefono.hasError("required")) {Introduzca su teléfono}
+              </div>
+            }
           </div>
           <div class="col-md-6">
             <div class="form-group">
               <label>Rol*</label>
-              <select class="form-control">
+              <select formControlName="rol" class="form-control">
                 <option value="" disabled selected>Seleccione su rol</option>
                 <option>Estudiante</option>
                 <option>Docente</option>
                 <option>Administrativo</option>
               </select>
             </div>
+            @if (rol.invalid && (rol.dirty || rol.touched)) {
+              <div class="invalid-feedback d-block">
+                  @if (rol.hasError("required")) {Indique su rol}
+              </div>
+            }
           </div>
         </div>
 
@@ -66,8 +98,13 @@
           <div class="col-12">
             <div class="form-group">
               <label>Domicilio*</label>
-              <input type="text" class="form-control" placeholder="Ingrese su dirección">
+              <input formControlName="usDomicilio" type="text" class="form-control" placeholder="Ingrese su dirección">
             </div>
+            @if (usDomicilio.invalid && (usDomicilio.dirty || usDomicilio.touched)) {
+              <div class="invalid-feedback d-block">
+                  @if (usDomicilio.hasError("required")) {Introduzca su domicilio}
+              </div>
+            }
           </div>
         </div>
 
@@ -76,13 +113,28 @@
           <div class="col-md-6">
             <div class="form-group">
               <label>Localidad*</label>
-              <input type="text" class="form-control" placeholder="Ingrese su localidad">
+              <select formControlName="usLocalidad" class="form-control">
+                <option value="0" disabled selected>Seleccione su localidad</option>
+                @for (localidad of localidades; track $index) {
+                  <option class="option" value="{{localidad.id}}">{{localidad.nombre}}</option>
+                }
+              </select>
             </div>
+            @if (usLocalidad.invalid && (usLocalidad.dirty || usLocalidad.touched)) {
+              <div class="invalid-feedback d-block">
+                  @if (usLocalidad.hasError("required")) {Indique su localidad}
+              </div>
+            }
           </div>
           <div class="col-md-6">
             <div class="form-group">
               <label>Provincia*</label>
-              <input type="text" class="form-control" placeholder="Ingrese su provincia">
+              <select formControlName="usProvincia" class="form-control" (change)="obtenerLocalidades()">
+                <option value="0" disabled selected>Seleccione su provincia</option>
+                @for (provincia of provincias; track $index) {
+                  <option class="option" value="{{provincia.id}}">{{provincia.nombre}}</option>
+                }
+              </select>
             </div>
           </div>
         </div>
@@ -95,25 +147,36 @@
               <input type="password" class="form-control" placeholder="Mínimo 8 caracteres">
               <small class="form-text">La contraseña debe contener al menos 8 caracteres</small>
             </div>
+            @if (usPassword.invalid && (usPassword.dirty || usPassword.touched)) {
+              <div class="invalid-feedback d-block">
+                  @if (usPassword.hasError("required")) {Introduzca una contraseña}
+                  @if (usPassword.hasError("minLenght")) {Contraseña inválida}
+              </div>
+            }
           </div>
           <div class="col-md-6">
             <div class="form-group">
               <label>Confirmar Contraseña*</label>
               <input type="password" class="form-control" placeholder="Repita su contraseña">
             </div>
+            @if (repetirPassword.invalid && (repetirPassword.dirty || repetirPassword.touched)) {
+                <div class="invalid-feedback d-block">
+                    @if (repetirPassword.hasError("repetirPassword")) {La contraseña no coincide}
+                </div>
+            }
           </div>
         </div>
 
         <!-- Botón de registro -->
         <div class="register-actions">
-          <button type="submit" class="btn btn-register">
+          <button (click) = "registrarUsuario()" type="submit" class="btn btn-register">
             <i class="fas fa-user-plus"></i> Registrar
           </button>
         </div>
 
         <!-- Enlace para login -->
         <div class="login-link">
-          ¿Ya tienes una cuenta? <a routerLink="public/auth/login">Inicia sesión</a>
+          ¿Ya tienes una cuenta? <a routerLink="/auth/login">Inicia sesión</a>
         </div>
       </form>
     </div>
