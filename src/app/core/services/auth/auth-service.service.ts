@@ -11,6 +11,9 @@ export interface AuthResponse {
   user: any;
   roles: string[];
 }
+import { get } from 'http';
+import { RolesInterfaz } from '../../interfaces/auth/roles-interfaz';
+import { RegisterRespuestaInterfaz } from '../../interfaces/auth/register-respuesta-interfaz';
 
 @Injectable({
   providedIn: 'root'
@@ -102,4 +105,14 @@ export class AuthServiceService {
   isLoggedIn(): Observable<boolean> {
     return this.loggedIn.asObservable();
   }
+
+  registrarUsuario(data: RegisterInterfaz): Observable<RegisterRespuestaInterfaz> {
+    return this.http.post<RegisterRespuestaInterfaz>(`${enviroment.apiUrl}/register`, data);
+  }
+  
+  getRoles(): Observable<RolesInterfaz[]> {
+    return this.http.get<RolesInterfaz[]>(`${enviroment.apiUrl}/roles`);
+  }
 }
+
+

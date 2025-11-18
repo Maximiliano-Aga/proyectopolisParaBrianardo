@@ -2,6 +2,9 @@ import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators, ValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms';
 import { LocalidadesServiceService } from '../../../core/services/localidades/localidades-service.service';
+import { RegisterInterfaz } from '../../../core/interfaces/auth/register-interfaz';
+import { AuthServiceService } from '../../../core/services/auth/auth-service.service';
+import { RolesInterfaz } from '../../../core/interfaces/auth/roles-interfaz';
 
 @Component({
   selector: 'app-register',
@@ -12,10 +15,12 @@ import { LocalidadesServiceService } from '../../../core/services/localidades/lo
 export class RegisterComponent {
 private fb = inject(FormBuilder);
 private localidadesService = inject(LocalidadesServiceService);
+private authService = inject(AuthServiceService)
 registrosForm: FormGroup;
 
 ngOnInit() {
   this.obtenerProvincias();
+  this.obtenerRoles();
 }
 
 constructor() {  
@@ -79,7 +84,25 @@ this.registrosForm = this.fb.group({
 
   registrarUsuario() {
     if (this.registrosForm.valid) {
-      console.log("Formulario de registro válido", this.registrosForm.value);
+      const registroData: RegisterInterfaz = {
+        usMail: this.usMail.value,
+        usApellido: this.usApellido.value,
+        usDocumento: this.usDocumento.value,
+        usNombre: this.usNombre.value,
+        usDomicilio: this.usDomicilio.value,
+        usLocalidad: `${this.provincias.find(provincia => provincia.id === this.usProvincia.value).nombre}, ${this.localidades.find(localidad => localidad.id === this.usLocalidad.value).nombre}`,
+        usPassword: this.usPassword.value,
+        usTelefono: this.usTelefono.value,
+        rol: this.rol.value
+      }
+      this.authService.registrarUsuario(registroData).subscribe({
+        next: (response) => {
+          console.log("Usuario registrado", response);
+        },
+        error: (error) => {
+          console.log("Usuario no registrado", error);
+        }
+      })
     } else {
       console.log("Formulario de registro inválido");
       this.registrosForm.markAllAsTouched();
@@ -107,4 +130,13 @@ this.registrosForm = this.fb.group({
     })
   }
 
+  roles: RolesInterfaz[] = [];
+  obtenerRoles() {
+    this.authService.getRoles().subscribe({
+      next: (response) => {
+        this.roles = response;
+        console.log(this.roles);
+      }
+    })
+  }
 }
