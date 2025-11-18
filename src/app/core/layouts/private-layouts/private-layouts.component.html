@@ -44,6 +44,11 @@
         <i class="bi bi-person-check-fill me-1"></i> Definir Roles
       </a>
     </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/private/carreras" routerLinkActive="active">
+        Ver Carreras
+      </a>
+    </li>
     </ul>
 
   <ul class="nav nav-pills mb-4" *ngIf="role === 'teacher'">
@@ -55,6 +60,11 @@
     <li class="nav-item">
       <a class="nav-link" routerLink="/private/teacher/attendance-list" routerLinkActive="active">
         Ver Asistencias
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/private/carreras" routerLinkActive="active">
+        Ver Carreras
       </a>
     </li>
   </ul>
