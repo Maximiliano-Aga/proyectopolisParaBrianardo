@@ -19,5 +19,9 @@ export class AsistenciasServiceService {
     return this.http.put<InscripcionInterfaz>(`${enviroment.apiUrl}/inscripciones/${inscripcion.idInscripciones}`, inscripcion);
   }
 
+  inscripcionesPorIdMateria(idMateria: number): Observable<InscripcionInterfaz[]> {
+    return this.http.get<InscripcionInterfaz[]>(`${enviroment.apiUrl}/inscripcionesPorMateria/${idMateria}`);
+  }
+
 }
  

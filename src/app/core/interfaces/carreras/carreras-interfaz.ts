@@ -6,5 +6,4 @@ export interface CarrerasInterfaz {
     created_at: string,
     updated_at: string,
     materias: MateriaInterfaz[]
-
 }
