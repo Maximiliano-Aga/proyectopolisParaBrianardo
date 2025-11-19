@@ -37,6 +37,9 @@ export class AuthServiceService {
     return this.http.post<AuthResponse>(`${this.apiUrl}/login`, credentials).pipe(
       tap(response => {
         this.saveToken(response.access_token);
+        if (response.user) {
+          this.saveUser(response.user);
+        }
         if (response.roles && response.roles.length > 0) {
           this.saveUserRole(response.roles[0]);
         }
@@ -52,10 +55,31 @@ export class AuthServiceService {
   logout(): void {
     this.removeToken();
     this.removeUserRole();
+    this.removeUser();
     this.loggedIn.next(false);
   }
 
   // --- Métodos protegidos para localStorage ---
+
+  private saveUser(user: any): void {
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.setItem('user', JSON.stringify(user));
+    }
+  }
+
+  getUser(): any | null {
+    if (isPlatformBrowser(this.platformId)) {
+      const user = localStorage.getItem('user');
+      return user ? JSON.parse(user) : null;
+    }
+    return null;
+  }
+
+  private removeUser(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.removeItem('user');
+    }
+  }
 
   private saveToken(token: string): void {
     if (isPlatformBrowser(this.platformId)) {

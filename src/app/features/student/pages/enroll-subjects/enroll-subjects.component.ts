@@ -5,6 +5,7 @@ import { Carrera } from '../../../../features/carreras/models/carrera.model'; //
 import { Materia } from '../../../../features/carreras/models/materia.model'; // Ajusta la ruta si es necesario
 import { CarreraService } from '../../../../features/carreras/services/carrera.service'; // Ajusta la ruta si es necesario
 import { InscripcionService } from '../../services/inscripcion.service';
+import { AuthServiceService } from '../../../../core/services/auth/auth-service.service';
 
 @Component({
   selector: 'app-enroll-subjects',
@@ -16,18 +17,22 @@ import { InscripcionService } from '../../services/inscripcion.service';
 export class EnrollSubjectsComponent implements OnInit {
 
   public carreras$!: Observable<Carrera[]>;
-  public currentUserId: number = 1; // IMPORTANTE: Este ID de usuario DEBE obtenerse del servicio de autenticación real.
-                                  // Se usa un valor fijo por simplicidad y tiempo, pero es crucial obtenerlo dinámicamente.
+  public currentUserId!: number;
 
   public inscripcionEnProceso: boolean = false; // Para evitar múltiples envíos
 
   constructor(
     private carreraService: CarreraService,
-    private inscripcionService: InscripcionService
+    private inscripcionService: InscripcionService,
+    private authService: AuthServiceService
   ) { }
 
   ngOnInit(): void {
     this.carreras$ = this.carreraService.getCarrerasConMaterias();
+    const user = this.authService.getUser();
+    if (user) {
+      this.currentUserId = user.id;
+    }
   }
 
   inscribir(materiaId: number, materiaNombre: string): void {
