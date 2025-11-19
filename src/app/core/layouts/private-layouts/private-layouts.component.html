@@ -12,40 +12,40 @@
 
   <ul class="nav nav-pills mb-4" *ngIf="role === 'admin'">
     <li class="nav-item" role="presentation">
-      <a class="nav-link" routerLink="/private/admin/user-management" routerLinkActive="active">
+      <a class="nav-link" routerLink="/private/admin/dashboard/user-management" routerLinkActive="active">
         <i class="bi bi-bell-fill me-1"></i>
         Solicitudes Pendientes <span class="badge bg-danger ms-1">2</span>
       </a>
     </li>
     <li class="nav-item" role="presentation">
-      <a class="nav-link" routerLink="/private/admin/take-attendance" routerLinkActive="active">
+      <a class="nav-link" routerLink="/private/admin/dashboard/take-attendance" routerLinkActive="active">
         <i class="bi bi-calendar-check me-1"></i>
         Tomar/Editar Asistencia
       </a>
     </li>
     <li class="nav-item" role="presentation">
-      <a class="nav-link" routerLink="/private/admin/role-management" routerLinkActive="active">
+      <a class="nav-link" routerLink="/private/admin/dashboard/role-management" routerLinkActive="active">
         <i class="bi bi-person-check-fill me-1"></i> Definir Roles
       </a>
     </li>
     </ul>
 
-  <ul class="nav nav-pills mb-4" *ngIf="role === 'teacher'">
+  <ul class="nav nav-pills mb-4" *ngIf="role === 'profesor'">
     <li class="nav-item">
-      <a class="nav-link" routerLink="/private/teacher/subjects" routerLinkActive="active">
+      <a class="nav-link" routerLink="/private/teacher/dashboard/subjects" routerLinkActive="active">
         Mis Materias
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" routerLink="/private/teacher/attendance-list" routerLinkActive="active">
+      <a class="nav-link" routerLink="/private/teacher/dashboard/attendance-list" routerLinkActive="active">
         Ver Asistencias
       </a>
     </li>
   </ul>
 
-  <ul class="nav nav-pills mb-4" *ngIf="role === 'student'">
+  <ul class="nav nav-pills mb-4" *ngIf="role === 'estudiante'">
     <li class="nav-item">
-      <a class="nav-link" routerLink="/private/student/attendance-history" routerLinkActive="active">
+      <a class="nav-link" routerLink="/private/student/dashboard/attendance-history" routerLinkActive="active">
         Mi Historial de Asistencias
       </a>
     </li>

@@ -1,5 +1,5 @@
 import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { provideRouter, withViewTransitions } from '@angular/router';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 
 
@@ -13,9 +13,9 @@ import { authInterceptor } from './core/interceptors/auth.interceptor';
 export const appConfig: ApplicationConfig = {
   providers: [provideHttpClient(), 
     provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(routes),
-    provideRouter(studentRoutes),
-    provideRouter(teacherRoutes),
+    provideRouter(routes, withViewTransitions()),
+    provideRouter(studentRoutes, withViewTransitions()),
+    provideRouter(teacherRoutes, withViewTransitions()),
     provideClientHydration(withEventReplay()),
 
     provideHttpClient(withInterceptors([authInterceptor]))

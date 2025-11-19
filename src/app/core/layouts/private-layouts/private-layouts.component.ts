@@ -1,6 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet, RouterModule } from '@angular/router';
+import { RouterOutlet, RouterModule, RouterLink } from '@angular/router';
 import { AuthServiceService } from '../../services/auth/auth-service.service';
 
 
@@ -10,7 +10,8 @@ import { AuthServiceService } from '../../services/auth/auth-service.service';
   imports: [
     CommonModule,
     RouterOutlet,
-    RouterModule
+    RouterModule,
+    RouterLink
   ],
   templateUrl: './private-layouts.component.html',
   styleUrls: ['./private-layouts.component.css']

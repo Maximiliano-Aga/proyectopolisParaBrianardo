@@ -18,28 +18,19 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Páez, Emanuel</td>
-                                <td>Programación III</td>
-                                <td>25/07/2025</td>
-                                <td class="text-center">
-                                    <button class="btn btn-success btn-sm me-1" title="Aprobar"><i
-                                            class="bi bi-check-lg"></i></button>
-                                    <button class="btn btn-danger btn-sm" title="Rechazar"><i
-                                            class="bi bi-x-lg"></i></button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Aga, Maximiliano</td>
-                                <td>Derechos Humanos</td>
-                                <td>24/07/2025</td>
-                                <td class="text-center">
-                                    <button class="btn btn-success btn-sm me-1" title="Aprobar"><i
-                                            class="bi bi-check-lg"></i></button>
-                                    <button class="btn btn-danger btn-sm" title="Rechazar"><i
-                                            class="bi bi-x-lg"></i></button>
-                                </td>
-                            </tr>
+                            @for (inscripcion of inscripcionesPendientes; track $index) {
+                                <tr>
+                                    <td>{{inscripcion.usuario.usApellido}}, {{inscripcion.usuario.usNombre}}</td>
+                                    <td>{{inscripcion.materia.matNombre}}</td>
+                                    <td>{{inscripcion.created_at}}</td>
+                                    <td class="text-center">
+                                        <button (click)="aprobarInscripcion(inscripcion)" class="btn btn-success btn-sm me-1" title="Aprobar"><i
+                                                class="bi bi-check-lg"></i></button>
+                                        <button (click)="rechazarInscripcion(inscripcion)" class="btn btn-danger btn-sm" title="Rechazar"><i
+                                                class="bi bi-x-lg"></i></button>
+                                    </td>
+                                </tr>
+                            }
                         </tbody>
                     </table>
                 </div>
