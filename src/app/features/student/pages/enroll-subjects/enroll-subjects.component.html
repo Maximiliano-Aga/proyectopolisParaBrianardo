@@ -11,10 +11,29 @@
               <li *ngFor="let materia of carrera.materias" class="list-group-item d-flex justify-content-between align-items-center">
                 {{ materia.matNombre }}
                 <button
+                  *ngIf="materia.inscripcionStatus === 'no_inscrito'"
                   class="btn btn-sm btn-primary"
                   (click)="inscribir(materia.id, materia.matNombre)"
                   [disabled]="inscripcionEnProceso">
                   Inscribirse
+                </button>
+                <button
+                  *ngIf="materia.inscripcionStatus === 'pendiente'"
+                  class="btn btn-sm btn-warning"
+                  [disabled]="true">
+                  Pendiente
+                </button>
+                <button
+                  *ngIf="materia.inscripcionStatus === 'aprobada'"
+                  class="btn btn-sm btn-success"
+                  [disabled]="true">
+                  Aprobada
+                </button>
+                <button
+                  *ngIf="materia.inscripcionStatus === 'rechazada'"
+                  class="btn btn-sm btn-danger"
+                  [disabled]="true">
+                  Rechazada
                 </button>
               </li>
               <li *ngIf="carrera.materias.length === 0" class="list-group-item text-muted">

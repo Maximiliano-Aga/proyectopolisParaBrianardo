@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { enviroment } from '../../../../enviroment/enviroment';
 
@@ -11,6 +11,17 @@ export class InscripcionService {
   private apiUrl = `${enviroment.apiUrl}/inscripciones`;
 
   constructor(private http: HttpClient) { }
+
+  getInscripciones(idUsuario?: number, idMateria?: number): Observable<any[]> {
+    let params = new HttpParams();
+    if (idUsuario) {
+      params = params.set('idUsuario', idUsuario.toString());
+    }
+    if (idMateria) {
+      params = params.set('idMateria', idMateria.toString());
+    }
+    return this.http.get<any[]>(this.apiUrl, { params });
+  }
 
   /**
    * Envía una solicitud de inscripción para una materia.
