@@ -24,4 +24,8 @@ export class PrivateLayoutsComponent implements OnInit {
   ngOnInit(): void {
     this.role = this.authService.getUserRole();
   }
+
+  logout(): void {
+    this.authService.logout();
+  }
 }

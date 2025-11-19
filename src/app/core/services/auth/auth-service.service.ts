@@ -57,6 +57,7 @@ export class AuthServiceService {
     this.removeUserRole();
     this.removeUser();
     this.loggedIn.next(false);
+    this.http.post(`/public/auth/login`, {}).subscribe();
   }
 
   // --- Métodos protegidos para localStorage ---

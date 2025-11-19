@@ -28,5 +28,9 @@ export class AsistenciasServiceService {
     return this.http.post<AsistenciaInterfaz>(`${enviroment.apiUrl}/asistencias`, asistencia);
   }
 
+  inscripcionesAusentes(idMateria: number, asisFecha: string): Observable<any[]> {
+    return this.http.get<any[]>(`${enviroment.apiUrl}/asistenciasAusentes/${idMateria}/${asisFecha}`);
+  }
+
 }
  
