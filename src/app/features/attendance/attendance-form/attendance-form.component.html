@@ -3,7 +3,7 @@
         Control de Asistencia
     </div>
     <div class="card-body">
-        <form [formGroup]="asistenciaForm">
+        <form [formGroup]="estudiantesForm">
             <div class="row g-3 mb-4">
                 <div class="col-md-6">
                     <label for="materia-selector" class="form-label">Seleccionar Carrera</label>
@@ -23,45 +23,41 @@
                         }
                     </select>
                 </div>
-                <div class="col-md-6">
-                    <label for="fecha-selector" class="form-label">Seleccionar Fecha</label>
-                    <!-- 
-                      Para Angular:
-                      Usa [(ngModel)] para vincular el valor a una propiedad de fecha en tu .ts.
-                    -->
-                    <input type="date" class="form-control" id="fecha-selector" value="2025-07-26">
-                </div>
             </div>
         </form>
-        <div class="table-responsive">
-            <table class="table table-striped table-hover align-middle">
-                <thead class="table-dark">
-                    <tr>
-                        <th>Alumno</th>
-                        <th class="text-center">Presente</th>
-                        <th class="text-center">Ausente</th>
-                        <th class="text-center">Tarde</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @for (inscripcion of inscripciones; track $index) {
+        <form [formGroup]="asistenciaForm">
+            <div class="col-12 mb-3">
+                <label class="form-label">Seleccionar Fecha</label>
+                <input formControlName="asisFecha" type="date" class="form-control">
+            </div>
+            <div class="table-responsive">
+                <table class="table table-striped table-hover align-middle">
+                    <thead class="table-dark">
                         <tr>
-                            <td>{{inscripcion.usuario.usApellido}}, {{inscripcion.usuario.usNombre}}</td>
-                            <td class="text-center"><input class="form-check-input" type="radio" name="alumno1" checked></td>
-                            <td class="text-center"><input class="form-check-input" type="radio" name="alumno1"></td>
-                            <td class="text-center"><input class="form-check-input" type="radio" name="alumno1"></td>
+                            <th lass="text-center">Alumno</th>
+                            <th class="text-center">Estado</th>
                         </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
+                    </thead>
+                    <tbody formArrayName="asistencias">
+                        @for (inscripcion of inscripciones; track $index) {
+                            <tr [formGroupName]="$index">
+                                <td>{{inscripcion.usuario.usApellido}}, {{inscripcion.usuario.usNombre}}</td>
+                                <td>
+                                    <select formControlName="estadoAsistencia" class="form-select">
+                                        <option disabled value="0">Seleccionar estado</option>
+                                        <option value="Presente">Presente</option>
+                                        <option value="Ausente">Ausente</option>
+                                        <option value="Llegada Tarde">Llegada Tarde</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </form>
         <div class="d-grid mt-3">
-            <!-- 
-              Para Angular:
-              Usa el evento (click) para llamar a un método en tu .ts que guarde los datos.
-              Ejemplo: (click)="guardarAsistencia()"
-            -->
-            <button class="btn btn-primary">Guardar Cambios de Asistencia</button>
+            <button (click)="cargarAsistencias()" class="btn btn-primary">Guardar Cambios de Asistencia</button>
         </div>
     </div>
 </div>
