@@ -1,0 +1,31 @@
+<div *ngIf="carreras$ | async as carreras; else loading">
+  <div *ngIf="carreras.length > 0; else noCarreras">
+    <h2>Lista de Carreras y Materias</h2>
+    <div *ngFor="let carrera of carreras" class="accordion-item mb-2">
+      <details class="border rounded p-2">
+        <summary class="fw-bold" style="cursor: pointer;">{{ carrera.carNombre }}</summary>
+        <ul class="list-group list-group-flush mt-2">
+          <li *ngFor="let materia of carrera.materias" class="list-group-item">
+            {{ materia.matNombre }}
+          </li>
+          <li *ngIf="carrera.materias.length === 0" class="list-group-item text-muted">
+            No hay materias para esta carrera.
+          </li>
+        </ul>
+      </details>
+    </div>
+  </div>
+  <ng-template #noCarreras>
+    <div class="alert alert-info" role="alert">
+      No se encontraron carreras.
+    </div>
+  </ng-template>
+</div>
+
+<ng-template #loading>
+  <div class="d-flex justify-content-center mt-5">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Cargando...</span>
+    </div>
+  </div>
+</ng-template>
