@@ -40,6 +40,7 @@ export class JustifyAbsenceComponent {
     if (this.asistencias.length !== 0) {
       this.asistencias.forEach(asistencia => {
         const control = this.fb.group({
+          idAsist: asistencia.idAsist,
           asisJustificada: asistencia.asisJustificada,
           estadoAsistencia: asistencia.estadoAsistencia,
           idInscripcion: asistencia.idInscripcion,
@@ -49,13 +50,19 @@ export class JustifyAbsenceComponent {
     }
   }
 
-  cargarAsistencias() {
+  nuevoFormularioVacio() {
+    this.asistenciaForm = this.fb.group({
+      asistencias: this.fb.array([])
+    })
+  }
+
+  actualizarAsistencias() {
     if (this.asistenciaForm.valid) {
       const asistenciasFormArray = this.asistenciaForm.get('asistencias') as FormArray;
       const requests = asistenciasFormArray.controls.map(control => {
         const asistencia: AsistenciaInterfaz = control.value;
         asistencia.asisFecha = this.estudiantesForm.get("asisFecha")?.value!;
-        return this.asistenciaService.guardarAsistencia(asistencia);
+        return this.asistenciaService.actualizarAsistencia(asistencia);
       });
       forkJoin(requests).subscribe({
         next: (respuestas) => {
@@ -63,6 +70,7 @@ export class JustifyAbsenceComponent {
           this.asistenciaForm.reset();
           asistenciasFormArray.clear();
           this.estudiantesForm.reset();
+          this.nuevoFormularioVacio();
           this.crearAsistencias();
         },
         error: (error) => {

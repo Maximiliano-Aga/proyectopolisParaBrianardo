@@ -28,6 +28,10 @@ export class AsistenciasServiceService {
     return this.http.post<AsistenciaInterfaz>(`${enviroment.apiUrl}/asistencias`, asistencia);
   }
 
+  actualizarAsistencia(asistencia: AsistenciaInterfaz): Observable<AsistenciaInterfaz> {
+    return this.http.put<AsistenciaInterfaz>(`${enviroment.apiUrl}/asistencias/${asistencia.idAsist}`, asistencia);
+  }
+
   inscripcionesAusentes(idMateria: number, asisFecha: string): Observable<any[]> {
     return this.http.get<any[]>(`${enviroment.apiUrl}/asistenciasAusentes/${idMateria}/${asisFecha}`);
   }

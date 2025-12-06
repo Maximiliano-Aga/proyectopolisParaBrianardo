@@ -2,22 +2,30 @@ import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter, withViewTransitions } from '@angular/router';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 
-
 import { routes } from './app.routes';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 import { studentRoutes } from './features/student/student.routes';
 import { teacherRoutes } from './features/teacher/teacher.routes';
-import { authInterceptor } from './core/interceptors/auth.interceptor';
 
+// Importaciones necesarias
+import { authInterceptor } from './core/interceptors/auth.interceptor';
+import { loadingInterceptor } from './core/interceptors/loader-interceptor.interceptor'; 
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideHttpClient(), 
+  providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
+    
     provideRouter(routes, withViewTransitions()),
     provideRouter(studentRoutes, withViewTransitions()),
     provideRouter(teacherRoutes, withViewTransitions()),
-    provideClientHydration(withEventReplay()),
+    
+    
+    // provideClientHydration(withEventReplay()), 
 
-    provideHttpClient(withInterceptors([authInterceptor]))
+    // Configuración HTTP: Aquí se combinan los interceptores
+    provideHttpClient(withInterceptors([
+      loadingInterceptor, 
+      authInterceptor     
+    ]))
   ]
 };

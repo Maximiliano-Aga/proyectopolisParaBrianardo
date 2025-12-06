@@ -4,30 +4,35 @@
     </div>
     <div class="card-body">
         <form [formGroup]="estudiantesForm">
-            <div class="row g-3 mb-4">
-                <div class="col-md-6">
-                    <label for="materia-selector" class="form-label">Seleccionar Carrera</label>
-                    <select formControlName="idCarrera" (change)="seleccionarMateriasSegunCarrera()" class="form-select">
-                        <option disabled selected value=0>Seleccionar carrera</option>
-                        @for (carrera of carreras; track $index) {
-                            <option value={{carrera.id}}>{{carrera.carNombre}}</option>
-                        }
-                    </select>
-                </div>
-                <div class="col-md-6">
-                    <label for="materia-selector" class="form-label">Seleccionar Materia</label>
-                    <select  formControlName="idMateria" class="form-select">
-                        <option selected disabled value=0>Seleccionar materia</option>
-                        @for (materia of materias; track $index) {
-                            <option value="{{materia.id}}">{{materia.matNombre}}</option>
-                        }
-                    </select>
-                </div>
-                <div class="col-12 mb-3">
-                    <label class="form-label">Seleccionar Fecha</label>
-                    <input (input)="buscarInscripcionsPorIdMateriaYFecha()" formControlName="asisFecha" type="date" class="form-control">
-                </div>
-            </div>
+            <div class="row g-3 mb-4 align-items-end">
+    <div class="col-md-6">
+        <label for="materia-selector" class="form-label">Seleccionar Carrera</label>
+        <select formControlName="idCarrera" (change)="seleccionarMateriasSegunCarrera()" class="form-select">
+            <option disabled selected value=0>Seleccionar carrera</option>
+            @for (carrera of carreras; track $index) {
+                <option value={{carrera.id}}>{{carrera.carNombre}}</option>
+            }
+        </select>
+    </div>
+    <div class="col-md-6">
+        <label for="materia-selector" class="form-label">Seleccionar Materia</label>
+        <select  formControlName="idMateria" class="form-select">
+            <option selected disabled value=0>Seleccionar materia</option>
+            @for (materia of materias; track $index) {
+                <option value="{{materia.id}}">{{materia.matNombre}}</option>
+            }
+        </select>
+    </div>
+    <div class="col-8 mb-3">
+        <label class="form-label">Seleccionar Fecha</label>
+        <input formControlName="asisFecha" type="date" class="form-control">
+    </div>
+    <div class="col-4 mb-3 d-flex align-items-end">
+        <input type="submit" (click)="buscarInscripcionsPorIdMateriaYFecha()" 
+               class="btn btn-primary w-100" value="Buscar Asistencias">
+    </div>
+</div>
+            
         </form>
         <form [formGroup]="asistenciaForm">
             <div class="table-responsive">
@@ -57,7 +62,7 @@
             </div>
         </form>
         <div class="d-grid mt-3">
-            <button (click)="cargarAsistencias()" class="btn btn-primary">Guardar Cambios de Asistencia</button>
+            <button (click)="actualizarAsistencias()" class="btn btn-primary">Guardar Cambios de Asistencia</button>
         </div>
     </div>
 </div>

@@ -1,1 +1,7 @@
 <router-outlet></router-outlet>
+
+@if (isLoading()) {
+  <div class="loader-overlay">
+    <app-loader></app-loader>
+  </div>
+}
