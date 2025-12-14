@@ -61,12 +61,13 @@ export class LoginComponent {
     const role = this.authService.getUserRole();
 
     if (role === 'admin') {
-      this.router.navigate(['/admin/dashboard']);
+      this.router.navigate(['/private/admin/dashboard']);
     } else if (role === 'estudiante') {
-      this.router.navigate(['/student/dashboard']);
+      this.router.navigate(['/private/student/dashboard']);
     } else if (role === 'profesor') {
-      this.router.navigate(['/teacher/dashboard']);
+      this.router.navigate(['/private/teacher/dashboard']);
     } else {
+      // Si no hay un rol definido o no coincide, redirigir a una página por defecto o a la home.
       this.router.navigate(['/']);
     }
   }

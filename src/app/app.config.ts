@@ -16,8 +16,6 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
     
     provideRouter(routes, withViewTransitions()),
-    provideRouter(studentRoutes, withViewTransitions()),
-    provideRouter(teacherRoutes, withViewTransitions()),
     
     
     // provideClientHydration(withEventReplay()), 

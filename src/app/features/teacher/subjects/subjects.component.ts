@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
+import { SubjectManagementComponent } from '../../admin/subject-management/subject-management.component';
 
 @Component({
   selector: 'app-subjects',
-  imports: [],
+  standalone: true,
+  imports: [SubjectManagementComponent],
   templateUrl: './subjects.component.html',
   styleUrl: './subjects.component.css'
 })
