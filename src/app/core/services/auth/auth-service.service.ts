@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject, tap } from 'rxjs';
 import { enviroment } from '../../../../enviroment/enviroment';
 import { RegisterInterfaz } from '../../interfaces/auth/register-interfaz';
+import { Router } from '@angular/router';
 
 export interface AuthResponse {
   access_token: string;
@@ -22,6 +23,7 @@ export class AuthServiceService {
   private http = inject(HttpClient);
   private apiUrl = enviroment.apiUrl;
   private platformId = inject(PLATFORM_ID); // <-- Inyectamos el Platform ID
+  private router = inject(Router); // <-- Inyectamos el Router
 
   // Inicializamos con 'false' y lo actualizamos en el constructor si estamos en el navegador
   private loggedIn = new BehaviorSubject<boolean>(false);
@@ -57,7 +59,7 @@ export class AuthServiceService {
     this.removeUserRole();
     this.removeUser();
     this.loggedIn.next(false);
-    this.http.post(`/public/auth/login`, {}).subscribe();
+    this.router.navigate(['/public/auth/login']);
   }
 
   // --- Métodos protegidos para localStorage ---

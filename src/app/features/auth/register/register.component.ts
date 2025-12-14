@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators, ValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms';
 import { LocalidadesServiceService } from '../../../core/services/localidades/localidades-service.service';
 import { RegisterInterfaz } from '../../../core/interfaces/auth/register-interfaz';
@@ -16,6 +16,7 @@ export class RegisterComponent {
 private fb = inject(FormBuilder);
 private localidadesService = inject(LocalidadesServiceService);
 private authService = inject(AuthServiceService)
+private router = inject(Router);
 registrosForm: FormGroup;
 
 ngOnInit() {
@@ -98,6 +99,7 @@ this.registrosForm = this.fb.group({
       this.authService.registrarUsuario(registroData).subscribe({
         next: (response) => {
           console.log("Usuario registrado", response);
+          this.router.navigate(['/public/auth/login']);
         },
         error: (error) => {
           console.log("Usuario no registrado", error);
