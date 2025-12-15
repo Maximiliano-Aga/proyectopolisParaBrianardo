@@ -1,67 +1,71 @@
 <div class="accordion" id="accordionMaterias">
 
-  <div 
-    class="accordion-item"
-    *ngFor="let item of materiasConResumen; let i = index"
-  >
-
-    <h2 class="accordion-header" [id]="'heading-' + i">
-      <button
-        class="accordion-button collapsed fw-bold"
-        type="button"
-        data-bs-toggle="collapse"
-        [attr.data-bs-target]="'#collapse-' + i"
-      >
-        {{ item.materia.matNombre }}
-
-        <span
-          class="badge bg-primary ms-3"
-          *ngIf="item.resumen"
-        >
-          Total: {{ item.resumen.resumen_asistencias.total_registros }}
-        </span>
-      </button>
-    </h2>
-
+  @for (item of materiasConResumen; track $index) {
     <div
-      class="accordion-collapse collapse"
-      [id]="'collapse-' + i"
-      data-bs-parent="#accordionMaterias"
+      class="accordion-item"
     >
-      <div class="accordion-body">
+      <h2 class="accordion-header" [id]="'heading-' + $index">
+        <button
+          class="accordion-button collapsed fw-bold"
+          type="button"
+          data-bs-toggle="collapse"
+          [attr.data-bs-target]="'#collapse-' + $index"
+        >
+          {{ item.materia.matNombre }}
 
-        <!-- Loading -->
-        <div *ngIf="item.loading" class="alert alert-info">
-          Cargando resumen...
-        </div>
-
-        <!-- Error -->
-        <div *ngIf="item.error" class="alert alert-danger">
-          {{ item.error }}
-        </div>
-
-        <!-- Resumen -->
-        <div *ngIf="item.resumen && !item.loading">
-
-          <div class="d-flex justify-content-around mb-3 p-2 bg-light rounded">
-            <span class="text-success fw-bold">
-              Presente: {{ item.resumen.resumen_asistencias.presente }}
+          @if (item.resumen) {
+            <span
+              class="badge bg-primary ms-3"
+            >
+              Total: {{ item.resumen.resumen_asistencias.total_registros }}
             </span>
+          }
+        </button>
+      </h2>
 
-            <span class="text-warning fw-bold">
-              Tarde: {{ item.resumen.resumen_asistencias.tardanzas }}
-            </span>
+      <div
+        class="accordion-collapse collapse"
+        [id]="'collapse-' + $index"
+        data-bs-parent="#accordionMaterias"
+      >
+        <div class="accordion-body">
 
-            <span class="text-danger fw-bold">
-              Ausente: {{ item.resumen.resumen_asistencias.faltas }}
-            </span>
-          </div>
+          @if (item.loading) {
+            <div class="alert alert-info">
+              Cargando resumen...
+            </div>
+          }
+
+          @if (item.error) {
+            <div class="alert alert-danger">
+              {{ item.error }}
+            </div>
+          }
+
+          @if (item.resumen && !item.loading) {
+
+            <div class="d-flex justify-content-around mb-3 p-2 bg-light rounded">
+              <span class="text-success fw-bold">
+                Presente: {{ item.resumen.resumen_asistencias.presente }}
+              </span>
+
+              <span class="text-warning fw-bold">
+                Tarde: {{ item.resumen.resumen_asistencias.tardanzas }}
+              </span>
+
+              <span class="text-danger fw-bold">
+                Ausente: {{ item.resumen.resumen_asistencias.faltas }}
+              </span>
+            </div>
+
+          }
 
         </div>
-
       </div>
-    </div>
 
-  </div>
+    </div>
+  } @empty {
+    <div class="p-3">No hay materias para mostrar.</div>
+  }
 
 </div>

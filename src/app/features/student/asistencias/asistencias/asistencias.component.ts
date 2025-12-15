@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AsistenciaSummary, AsistenciasService } from '../../../../core/services/Asistencias/asistencias-service.service';
 import { MateriasServiceService } from '../../../../core/services/materias/materias-service.service';
 import { MateriaInterfaz } from '../../../../core/interfaces/Materias/materia-interfaz';
+import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-asistencias',
@@ -88,4 +89,3 @@ interface MateriaConResumen {
   loading: boolean;
   error: string | null;
 }
-
