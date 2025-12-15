@@ -32,7 +32,4 @@ export const adminRoutes: Routes = [
   },
 
   { path: 'router-provisional', component: RouterProvisionalComponent },
-
-  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-  { path: '**', redirectTo: 'dashboard', pathMatch: 'full' }
 ];
