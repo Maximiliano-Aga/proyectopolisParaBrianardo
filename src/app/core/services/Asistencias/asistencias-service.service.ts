@@ -37,4 +37,32 @@ export class AsistenciasServiceService {
   }
 
 }
- 
+
+// Define una interfaz para la estructura de la respuesta de Laravel
+export interface AsistenciaSummary {
+  alumno_id: number;
+  nombre: string;
+  mensaje: string;
+  resumen_asistencias: {
+    presente: number;
+    faltas: number;
+    tardanzas: number;
+    total_registros: number;
+  };
+}
+
+@Injectable({
+  providedIn: 'root'
+})
+export class AsistenciasService {
+
+  constructor(private http: HttpClient) { }
+
+  /**
+   * Obtiene el resumen consolidado de asistencias de un alumno
+   * usando el endpoint que creaste en ContadorAsistenciasController.
+   */
+  getSummary(userId: number, materiaId: number): Observable<AsistenciaSummary> {
+    return this.http.get<AsistenciaSummary>(`${enviroment.apiUrl}/reportes/asistencias/${userId}/${materiaId}`);
+  }
+}
