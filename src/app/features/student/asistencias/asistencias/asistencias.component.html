@@ -1,25 +1,54 @@
 <div class="accordion" id="accordionMaterias">
 
   @for (item of materiasConResumen; track $index) {
-    <div
-      class="accordion-item"
-    >
+    <div class="accordion-item">
+
       <h2 class="accordion-header" [id]="'heading-' + $index">
         <button
-          class="accordion-button collapsed fw-bold"
+          class="accordion-button collapsed fw-bold d-flex align-items-center"
           type="button"
           data-bs-toggle="collapse"
           [attr.data-bs-target]="'#collapse-' + $index"
         >
-          {{ item.materia.matNombre }}
+
+          <!-- Nombre de la materia -->
+          <span class="flex-grow-1">
+            {{ item.materia.matNombre }}
+          </span>
 
           @if (item.resumen) {
-            <span
-              class="badge bg-primary ms-3"
-            >
-              Total: {{ item.resumen.resumen_asistencias.total_registros }}
-            </span>
+
+            <!-- Contenedor visual -->
+            <div class="d-flex align-items-center gap-2 ms-3">
+
+              <!-- Barra -->
+              <div
+                class="progress"
+                style="width: 100px; height: 6px;"
+              >
+                <div
+                  class="progress-bar"
+                  role="progressbar"
+                  [class]="getClaseBarra(item.resumen)"
+                  [style.width.%]="getPorcentajeAsistencia(item.resumen)"
+                >
+                </div>
+              </div>
+
+              <!-- Asistencias / Total -->
+              <small
+                class="text-muted fw-semibold text-nowrap"
+                style="font-size: 0.75rem;"
+              >
+                {{ getAsistencias(item.resumen) }}
+                /
+                {{ getAsistenciasTotales(item.resumen) }}
+              </small>
+
+            </div>
+
           }
+
         </button>
       </h2>
 
@@ -44,7 +73,7 @@
 
           @if (item.resumen && !item.loading) {
 
-            <div class="d-flex justify-content-around mb-3 p-2 bg-light rounded">
+            <div class="d-flex justify-content-around p-2 bg-light rounded">
               <span class="text-success fw-bold">
                 Presente: {{ item.resumen.resumen_asistencias.presente }}
               </span>
