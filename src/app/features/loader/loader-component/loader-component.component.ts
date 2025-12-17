@@ -5,7 +5,7 @@ import { LoaderService } from '../../../core/services/loader/loader-service.serv
 @Component({
   selector: 'app-loader',
   standalone: true,
-  imports: [NgIf],
+  
   templateUrl: './loader-component.component.html',
   styleUrl: './loader-component.component.css'
 })

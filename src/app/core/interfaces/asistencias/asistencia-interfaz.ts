@@ -3,5 +3,15 @@ export interface AsistenciaInterfaz {
     asisFecha: string,
     asisJustificada: boolean,
     estadoAsistencia: string,
-    idInscripcion: number
+    idInscripcion: number,
+    inscripcion?: {
+        usuario?: {
+            usNombre: string,
+            usApellido: string,
+            usDocumento: string
+        },
+        materia?: {
+            matNombre: string
+        }
+    }
 }

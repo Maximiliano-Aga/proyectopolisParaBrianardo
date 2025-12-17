@@ -36,6 +36,10 @@ export class AsistenciasServiceService {
     return this.http.get<any[]>(`${enviroment.apiUrl}/asistenciasAusentes/${idMateria}/${asisFecha}`);
   }
 
+  getAllAsistencias(): Observable<AsistenciaInterfaz[]> {
+    return this.http.get<AsistenciaInterfaz[]>(`${enviroment.apiUrl}/asistencias`);
+  }
+
 }
 
 // Define una interfaz para la estructura de la respuesta de Laravel
